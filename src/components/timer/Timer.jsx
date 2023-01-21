@@ -1,10 +1,14 @@
 import styled from "styled-components";
 import Clock from "./Clock";
+import { useSelector } from "react-redux";
+
 
 function Timer() {
+    let percentage = useSelector(state=>state.percentage);
+    console.log(percentage)
   return (
     <Container>
-        <OuterCerc>
+        <OuterCerc percentage={percentage}>
             <InnerCerc>
                 <Clock/>
             </InnerCerc>
@@ -27,7 +31,7 @@ height:18rem;
 display:flex;
 justify-content:center;
 align-items:center;
-background: ${({theme})=>theme.colors.primary};
+background: conic-gradient(${(props)=> props.theme.colors.primary} ${({percentage})=>percentage}%, transparent 10%);
 border-radius:50%;
 `
 const InnerCerc = styled.div`
