@@ -1,20 +1,21 @@
 import styled, { css } from "styled-components";
 import { useSelector,useDispatch } from "react-redux";
-import { setActiveBtn } from "./config/pomoReducer";
+import { setActiveBtn,setCurrent} from "./config/pomoReducer";
 
 
 function Tags() {
     
     let tags = useSelector(state=> state.periods);
-    let activeBtn = useSelector(state=>state.activeBtn)
+    let activeBtn = useSelector(state=>state.activeBtn);
     const dispatch = useDispatch();
 
-    const handleClick = (index)=>{
-        dispatch(setActiveBtn(index));
+    const handleClick = (index,tag)=>{
+        //dispatch(setActiveBtn(index));
+        dispatch(setCurrent({curr:tag,i:index}));
     }
   return (
     <TagsContainer>
-        {tags.map((tag,index)=><TagBtn key={index} onClick={()=>handleClick(index)} isActive={activeBtn===index}>{tag.type}</TagBtn>)}
+        {tags.map((tag,index)=><TagBtn key={index} onClick={()=>handleClick(index,tag)} isActive={activeBtn===index}>{tag.type}</TagBtn>)}
     </TagsContainer>
   )
 }
