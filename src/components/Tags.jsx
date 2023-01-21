@@ -24,7 +24,7 @@ export default Tags;
 const TagsContainer = styled.div`
 background-color: #272727;
 height:3.5rem;
-width:45%;
+width:45vw;
 margin:0 auto;
 border-radius:1rem;
 display:flex;
@@ -36,7 +36,7 @@ const TagBtn = styled.button`
   all:unset;
   color:white;
   font-weight:bolder;
-  width:26%;
+  width:26vw;
   margin:auto 3px;
   padding:5px 12px;
   text-align:center;

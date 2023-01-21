@@ -1,12 +1,13 @@
 import styled from "styled-components";
 import Tags from './Tags';
+import Timer from "./timer/Timer";
 
 function Pomodoro() {
   return (
     <Container>
-        <h1>Pomodoro</h1>
+        <h2>Pomodoro</h2>
         <Tags />
-        <h2>Timer</h2>
+        <Timer />
         <h4>Settings</h4>
     </Container>
   )
@@ -15,12 +16,11 @@ function Pomodoro() {
 export default Pomodoro;
 
 const Container = styled.div`
- width:100%;
+ width:100vw;
  display:flex;
  justify-content:center;
  align-items:center;
  flex-direction:column;
- gap:1rem;
  color: ${(props)=>props.theme.primary};
  background: ${(props)=>props.theme.primary};
 `
