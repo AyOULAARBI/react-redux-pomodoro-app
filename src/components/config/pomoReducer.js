@@ -5,23 +5,32 @@ import { createSlice } from "@reduxjs/toolkit";
 //       const [current,setCurrent] = useState(fields[activeBtn]);
 //       const [percentage,setPercentage] = useState(100);
 //       const [time,setTime] = useState(current.minutes*60);
-let initialState ={
-  periods:[{type:'sprint',time:25},{type:'short break',time:5},{type:'long break',time:15}],
-  isActive:false,
-  activeBtn:0,
-  get current(){return this.periods[this.activeBtn]},
-  percentage:100,
-  get time(){return this.current.time * 60},
-}
+
 let PomodoroSlice = createSlice({
   name:"pomodoro",
-  initialState:initialState,
+  initialState:{
+    showSettings:false,
+    periods:[{type:'sprint',time:25},{type:'short break',time:5},{type:'long break',time:15}],
+    isActive:false,
+    activeBtn:0,
+    current:{type:'sprint',time:25},
+    percentage:100,
+    time: 25*60,
+  },
   reducers:{
-    setActiveBtn: (state,action)=> ({...state,activeBtn : action.payload}),
-    decr: (state)=> ({...state,time: 2}),
-    setStatus: (state)=>({...state,isActive: ! state.isActive }),
+    initializer: (state)=>{ console.log('initializing');return{...state,current:state.periods[state.activeBtn],time: state.current.time*60}},
+    setActiveBtn: (state,action)=>{console.log('toggledBtn'); return {...state,activeBtn : action.payload}},
+    decr: (state)=>{return {...state,time: state.time-1}},
+    setStatus: (state,action)=>{console.log('toggled  timer btn');return {...state,isActive: ! state.isActive }},
+    setCurrent: (state,action)=>{
+      const {curr,i} = action.payload
+      return {...state,current:curr,activeBtn:i,time: curr.time*60}
+    },
+    setShowSettings: (state)=> ({...state,showSettings: !state.showSettings}),
+    setPeriods: (state,action)=>{console.log(action.payload);return{...state,periods:[...action.payload]}},
+    setPercentage: (state)=>({...state,percentage: (state.time*100)/(state.current.time*60)})
   }
 })
 
-export let {setActiveBtn,decr,setStatus} = PomodoroSlice.actions;
+export let {setShowSettings,initializer,setActiveBtn,decr,setStatus,setCurrent,setPeriods,setPercentage} = PomodoroSlice.actions;
 export default PomodoroSlice.reducer;
