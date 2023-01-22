@@ -26,8 +26,8 @@ const Container = styled.div`
  align-items:center;
 `
 const OuterCerc = styled.div`
-width:18rem;
-height:18rem;
+width:14rem;
+height:14rem;
 display:flex;
 justify-content:center;
 align-items:center;
@@ -35,11 +35,12 @@ background: conic-gradient(${(props)=> props.theme.colors.primary} ${({percentag
 border-radius:50%;
 `
 const InnerCerc = styled.div`
-width:16rem;
-height:16rem;
+width:13rem;
+height:13rem;
 display:flex;
 justify-content:center;
 align-items:center;
+gap:0.5rem;
 flex-direction:column;
 background: ${({theme})=>theme.colors.bg};
 border-radius:50%;
