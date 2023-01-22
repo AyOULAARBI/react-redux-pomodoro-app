@@ -1,11 +1,18 @@
 import styled from "styled-components";
 import Clock from "./Clock";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setPercentage } from "../config/pomoReducer";
+import { useEffect } from "react";
 
 
 function Timer() {
     let percentage = useSelector(state=>state.percentage);
-    console.log(percentage)
+    let time = useSelector(state=>state.time);
+    console.log(percentage);
+    let dispatch  = useDispatch();
+    useEffect(()=>{
+      dispatch(setPercentage());
+    },[time])
   return (
     <Container>
         <OuterCerc percentage={percentage}>
