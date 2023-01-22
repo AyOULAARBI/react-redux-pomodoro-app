@@ -15,7 +15,10 @@ function Pomodoro() {
         <h2>Pomodoro</h2>
         <Tags />
         <Timer />
-        <h4 onClick={()=>dispatch(setShowSettings())}>Settings</h4>
+        <ToggleSettings onClick={()=>dispatch(setShowSettings())}>
+          Settings
+</ToggleSettings>
+        <p>Made by AyOULAARBI</p>
      </Container>
         
   )
@@ -29,6 +32,23 @@ const Container = styled.div`
  justify-content:center;
  align-items:center;
  flex-direction:column;
- color: ${(props)=>props.theme.primary};
- background: ${(props)=>props.theme.primary};
+ button{
+  margin-top:1rem;
+ }
+ p{
+  position:absolute;
+  top:95%;
+  left:43%;
+  font-size:0.9rem;
+  color: ${(props)=>props.theme.colors.bg};
+background:${(props)=>props.theme.colors.primary};
+ }
+`
+const ToggleSettings = styled.button`
+all:unset;
+font-size:1.7rem;
+cursor:pointer;
+
+color:${(props)=>props.theme.colors.primary};
+
 `
