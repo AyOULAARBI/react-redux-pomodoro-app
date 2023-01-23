@@ -18,7 +18,7 @@ function Pomodoro() {
         <ToggleSettings onClick={()=>dispatch(setShowSettings())}>
           Settings
 </ToggleSettings>
-        <p>Made by AyOULAARBI</p>
+        <p>Created by AyOULAARBI</p>
      </Container>
         
   )
